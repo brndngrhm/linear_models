@@ -4,6 +4,7 @@ library(car)
 library(dplyr)
 library(gmodels)
 library(multcomp)
+library(multtest)
 
 treatment <- as.factor(c(1,1,1,1,1,1,1,1,1,
                          2,2,2,2,2,2,2,2,
@@ -17,7 +18,7 @@ View(data)
 
 #part c
 (boxplot <- ggplot(data,aes(x=treatment, y=values)) + geom_boxplot())
-q-q.plot <- (qqnorm(data$values))
+(q-q.plot <- qqnorm(data$values))
 
 
 #part d
@@ -63,19 +64,21 @@ upper <- est.cont + crit.val*stderr.cont
 
 (CI <- (paste(lower, upper)))
 
-#part h - not correct
-k <- rbind(c(1, -1, 0),
-           c(1, 0, -1))
-rownames(k) <- c("1 vs 2", "1 vs 3")
-colnames(k) <- c("treat 1", "treat 2", "treat3")
-k
+#part h (see - http://wwwuser.gwdg.de/~cscherb1/content/Statistics%20Course%20files/Working%20with%20orthogonal%20contrasts%20in%20R.pdf) for more examples
+contrast.matrix <- cbind(c(1, -1, 0), c(1, 0, -1)) #sets up contrast matrix
+colnames(contrast.matrix) <- c("1 vs 2", "1 vs 3") #re-names columns
+rownames(contrast.matrix) <- c("treat 1", "treat 2", "treat3") #renames rows
+contrast.matrix #views contrast matrix
 
-comp <- summary(glht(lm, linfct = k, test = Ftest()))
-summary(comp, Ftest())
+contrasts(treatment) <- contrast.matrix
+summary.lm(aov(values~treatment, data = data))
 
 
-#part i
-#not sure how to do it
+#part i - not complete
+(pairwise.t.test(values, treatment, p.adj = "none"))
+(pairwise.t.test(values, treatment, p.adj = "bonf"))
+(TukeyHSD(lm))
+
 
 #part j
 data$treatment2 <- "1"
