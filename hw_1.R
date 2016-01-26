@@ -4,7 +4,8 @@ library(car)
 library(dplyr)
 library(gmodels)
 library(multcomp)
-library(multtest)
+library(multtest) # for testing contrasts
+library(agricolae) # for Fisher LSD, Duncan's, 
 
 treatment <- as.factor(c(1,1,1,1,1,1,1,1,1,
                          2,2,2,2,2,2,2,2,
@@ -75,10 +76,14 @@ summary.lm(aov(values~treatment, data = data))
 
 
 #part i - not complete
-(pairwise.t.test(values, treatment, p.adj = "none"))
-(pairwise.t.test(values, treatment, p.adj = "bonf"))
-(TukeyHSD(lm))
+(pairwise.t.test(values, treatment, p.adj = "bonf"))# doesn't give crit value, just if pairs are sig.
+(TukeyHSD(lm)) # doesn't give crit value, just if pairs are sig.
 
+summary(lm)
+(LSD.test(data$value, data$treatment, MSerror = 0.0674, DFerror = 29, alpha = 0.05))      #use MS and DF for error term here
+(duncan.test(data$value, data$treatment, MSerror = 0.0674, DFerror = 29, alpha = 0.05))   #use MS and DF for error term here
+(SNK.test(data$value, data$treatment, MSerror = 0.0674, DFerror = 29, alpha = 0.05) )     #use MS and DF for error term here
+(scheffe.test(data$value, data$treatment, MSerror = 0.0674, DFerror = 29, alpha = 0.05))  #use MS and DF for error term here
 
 #part j
 data$treatment2 <- "1"
