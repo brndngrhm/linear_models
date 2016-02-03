@@ -7,20 +7,25 @@ output: html_document
 
 ####1
 
-a) Since this is a randomized complete block design, there are a total of 6*10 = 60 experimental units, with an experimental unit appearing only once in each block. Since we are using a block design, there is some extra source of variability we are tying to control for, so when it comes to randomly applying treatment to the experimental units, we should 
+a) Since this is a randomized complete block design, we know that are at least 6 experimental units with each block. This design structure ensures that, at a minimum, a complete set of treatments can be assigned to experimental units in each block. This leads to 2 scenarios: block size = 6, or block size > 6. 
 
-Data          | Treatment 1   |  Treatment 2 |   Treatment 3 | Treatment 4  | Treatment 5   | Treatment 6  |
-------------- | ------------- |------------- | ------------- |------------- | ------------- |------------- | 
-Block 1       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 2       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 3       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 4       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 5       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 6       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 7       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 8       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 9       | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
-Block 10      | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+    If the block size = 6, then we will have exactly 1 treatment per experimental unit per block. Randomizing the treatments in this case can be accomplished using a random number generator to generate 10 sets of 6 random numbers between 1 and 6. I did some research and came across a website called [randomizer.org](https://www.randomizer.org/) where this randomization scheme can be easily accomplished.
+    
+    If the block size > 6, some treatments would need to be applied to more than once.
+
+
+Data    | Treatment 1   |  Treatment 2 |   Treatment 3 | Treatment 4  | Treatment 5   | Treatment 6  |
+--------| ------------- |------------- | ------------- |------------- | ------------- |------------- | 
+Block 1 | treatment 1   | treatment 2  | treatment 3   | treatment 2  | Content Cell  | Content Cell |
+Block 2 | treatment 2   | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 3 | treatment 2   | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 4 | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 5 | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 6 | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 7 | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 8 | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 9 | Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
+Block 10| Content Cell  | Content Cell | Content Cell  | Content Cell | Content Cell  | Content Cell |
 
 
 
