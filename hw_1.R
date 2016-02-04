@@ -6,10 +6,12 @@ library(gmodels)
 library(multcomp)
 library(multtest) # for testing contrasts
 library(agricolae) # for Fisher LSD, Duncan's, scheffe...
+library(extrafont)
 
 treatment <- as.factor(c(1,1,1,1,1,1,1,1,1,
                          2,2,2,2,2,2,2,2,
                          3,3,3,3,3,3,3,3,3,3,3,3,3,3,3))
+
 values <- as.numeric(c(1.06, 0.79, 0.82, 0.89, 1.05, 0.95, 0.65, 1.15, 
                        1.12, 1.58, 1.45, 0.57, 1.16, 1.12, 0.91, 0.83, 0.43, 
                        0.29, 0.06, 0.44, 0.55, 0.61, 0.43, 0.51, 0.10, 0.53, 0.34, 0.06, 0.09, 0.17, 0.17, 0.60))
@@ -18,8 +20,9 @@ data <- data.frame(treatment, values)
 View(data)
 
 #part c
-(boxplot <- ggplot(data,aes(x=treatment, y=values)) + geom_boxplot())
-(q-q.plot <- qqnorm(data$values))
+data$resids <- data$values-mean(data$values)
+(ggplot(data,aes(x=treatment, y=values)) + geom_boxplot()) + labs(x="Treatment", title="Treatment Boxplots")
+(qqnorm(data$resids, main = "Normal Probability Plot of Residuals"))
 
 
 #part d
