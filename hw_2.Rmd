@@ -7,18 +7,33 @@ output: html_document
 
 ####1.
 
-a) Since this is a randomized complete block design, we know that are at least 6 experimental units with each block. This design structure ensures that, at a minimum, a complete set of treatments can be assigned to experimental units in each block. This leads to 2 scenarios: block size = 6, or block size > 6. 
+a) Since this is a randomized complete block design, we know that are at least 6 experimental units with each block. This design structure ensures that, at a minimum, a complete set of treatments can be assigned to experimental units in each block. Since the block size = 6,  we will have exactly 1 treatment per experimental unit per block. Randomizing the treatments in this case can be accomplished using a random number generator to generate 10 sets of 6 random numbers between 1 and 6. I did some research and came across a website called [randomizer.org](https://www.randomizer.org/) where this type of randomization can be easily accomplished. Assigning the treatments randomly is important as it works towards ensuring the treatments were applied in a way that minimizes any bias.
 
-    If the block size = 6, then we will have exactly 1 treatment per experimental unit per block. Randomizing the treatments in this case can be accomplished using a random number generator to generate 10 sets of 6 random numbers between 1 and 6. I did some research and came across a website called [randomizer.org](https://www.randomizer.org/) where this type of randomization can be easily accomplished. Assigning the treatments randomly is importsnt as it works towards ensuring the treatments were applied in a way that minimizes any bias.
-    
-    If the block size > 6 (i.e. more expermental units per block than number of treatments), some treatments would be applied more than once. If this were the case I would try to balance which treatments appeared in each block as best as I could, so that a given block would not have more of one treatment than any other. It could be inevitable that some blocks receive more of a certain treatment than the others, so after assigning a complete set of treatments per block I would try to randomize the remaining treatment assignments among the blocks. This would be more difficult as the size of the block size increased.
+using the website above I came up with the following design:
+
+.              | Treatment  |  Treatment |   Treatment |  Treatment |  Treatment   |  Treatment   | 
+------------- | -------------|--------------|--------------|--------------|--------------|--------------|
+Block 1       | 6 | 3 | 2 | 4| 5 | 1 |
+Block 2       | 4 | 5 | 2 | 1| 6 | 3 |
+Block 3       |  1 | 3 | 4 | 2| 6 | 5 |
+Block 4       | 2 | 3 | 5 | 6| 4 | 1 |
+Block 5       |  1 | 4 | 2 | 6 | 3 | 5 |
+Block 6       | 6 | 5 | 3 | 1| 4 | 2 |
+Block 7       | 4 | 2 | 3 | 1| 5 | 6 |
+Block 8       |  4 | 5 | 6 |  2 | 3 | 1 |
+Block 9       | 2 | 6 | 1 | 4| 3 | 5 |
+Block 10      |  1 | 5 | 2 | 4| 3 | 6 |
 
 
-b)
+b) To determine how many different randomization schemes are possible we can count combinations of 10 choose 6, which is 10!/(6! (10 - 6)!) = 210. There are 210 different ways to arrange the 6 treatments among the 10 blocks.
 
 
 ####2 
 
-a) Factor A has 3 levels, factor B has 4 levels
+a) Some questions I would have for the investigator are:
+    1. What question are you trying to answer with this data?
+    2. How was the data collected?
+    3. Was it all collected at once or spread out over time? If so how much time was there between collections?
+    4. 
 
 b)
