@@ -5,7 +5,7 @@ library(dplyr)
 library(gmodels)
 library(multcomp)
 library(multtest) # for testing contrasts
-library(agricolae) # for Fisher LSD, Duncan's, 
+library(agricolae) # for Fisher LSD, Duncan's, scheffe...
 
 treatment <- as.factor(c(1,1,1,1,1,1,1,1,1,
                          2,2,2,2,2,2,2,2,
@@ -68,12 +68,12 @@ upper <- est.cont + crit.val*stderr.cont
 #part h (see - http://wwwuser.gwdg.de/~cscherb1/content/Statistics%20Course%20files/Working%20with%20orthogonal%20contrasts%20in%20R.pdf) for more examples
 contrast.matrix <- cbind(c(1, -1, 0), c(1, 0, -1)) #sets up contrast matrix
 colnames(contrast.matrix) <- c("1 vs 2", "1 vs 3") #re-names columns
-rownames(contrast.matrix) <- c("treat 1", "treat 2", "treat3") #renames rows
+rownames(contrast.matrix) <- c("treat 1", "treat 2", "treat 3") #renames rows
 contrast.matrix #views contrast matrix
 
-contrasts(treatment) <- contrast.matrix
-summary.lm(aov(values~treatment, data = data))
-
+(contrasts(treatment) <- contrast.matrix)
+summary.lm(aov(values~treatment))
+  
 
 #part i - not complete
 (pairwise.t.test(values, treatment, p.adj = "bonf"))# doesn't give crit value, just if pairs are sig.
