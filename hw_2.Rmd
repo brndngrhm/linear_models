@@ -9,7 +9,8 @@ output: html_document
 
 a) Since this is a randomized complete block design, we know that are at least 6 experimental units with each block. This design structure ensures that, at a minimum, a complete set of treatments can be assigned to experimental units in each block. Since the block size = 6,  we will have exactly 1 treatment per experimental unit per block. Randomizing the treatments in this case can be accomplished using a random number generator to generate 10 sets of 6 random numbers between 1 and 6. I did some research and came across a website called [randomizer.org](https://www.randomizer.org/) where this type of randomization can be easily accomplished. Assigning the treatments randomly is important as it works towards ensuring the treatments were applied in a way that minimizes any bias.
 
-using the website above I came up with the following design:
+
+    Using the website mentioned above I came up with the following design:
 
 .              | Treatment  |  Treatment |   Treatment |  Treatment |  Treatment   |  Treatment   | 
 ------------- | -------------|--------------|--------------|--------------|--------------|--------------|
@@ -28,12 +29,65 @@ Block 10      |  1 | 5 | 2 | 4| 3 | 6 |
 b) To determine how many different randomization schemes are possible we can count combinations of 10 choose 6, which is 10!/(6! (10 - 6)!) = 210. There are 210 different ways to arrange the 6 treatments among the 10 blocks.
 
 
-####2 
+####2. 
 
 a) Some questions I would have for the investigator are:
     1. What question are you trying to answer with this data?
-    2. How was the data collected?
-    3. Was it all collected at once or spread out over time? If so how much time was there between collections?
-    4. 
+    2. What is Factor A?
+    3. What is Factor B?
+    4. Are either of the 2 factors being used a blocks? If so, which one and why?
+    5. Was the treatment randomly assigned to the experimental units?
+    6. Do the 2 values for each factor combination represent observations at different times?
+    7. 
 
-b)
+b) Scenario 1: 
+
+    Factor A is a new type of cake mix using 3 different type of sweetener representing a1, a2 and a3: sugar, aspartame and stevia. The 6 levels of Factor B could be 6 different brands of conventional ovens, which serve as blocks. The two observations per each factor combination represent different times at which the cakes are removed from the oven. The goal of the experiment is to see whether any of the 3 types of sweeteners have an effect on reducing baking time. 
+    
+    The model is:  
+    
+    
+    
+    This results in a split-plot design with the following ANOVA table:
+    
+    Source of Variation       |     df       |
+    ------------- | -------------|
+    Sweetener      | 2 |
+    Brand      | 3 |
+    Error         | 6 |
+    "Main Plot" Total |  11 |
+    
+    
+    Source of Variation       |     df       |
+    --------------|-------------|
+    Time | 1 |
+    TimexSweetner| 2|
+    Residual | 9 |
+    Grand Total |  23 |
+    
+    
+    Scenario 2: Factor A is a type of fish food with three different flavors representing a1, a3 and a3. The 6 levels of Factor B are 6 different species of popular fish found at pet stores and are blocks. The 2 observations per each factor combination represent feeding times of morning or evening. The goal of the experiment is to see if feeding times results in a certain flavor being eaten more.
+    
+    The model is:
+    
+    This results in a split-plot design with the following ANOVA table:
+    
+    Source of Variation       |     df       |
+    ------------- | -------------|
+    Flavor      | 2 |
+    Species      | 3 |
+    Error         | 6 |
+    "Main Plot" Total |  11 |
+    
+    
+    Source of Variation       |     df       |
+    --------------|-------------|
+    Feeding Time | 1 |
+    FeedingTimexFlavor| 2|
+    Residual | 9 |
+    Grand Total |  23 |
+    
+    
+    
+    
+    
