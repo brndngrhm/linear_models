@@ -6,7 +6,6 @@ library(gmodels)
 library(multcomp)
 library(multtest) # for testing contrasts
 library(agricolae) # for Fisher LSD, Duncan's, 
-library(extrafont)
 
 treatment <- as.factor(c(1,1,1,1,1,1,1,1,1,
                          2,2,2,2,2,2,2,2,
