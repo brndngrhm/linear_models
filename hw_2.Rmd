@@ -26,7 +26,7 @@ Block 9       | 2 | 6 | 1 | 4| 3 | 5 |
 Block 10      |  1 | 5 | 2 | 4| 3 | 6 |
 
 
-b) To determine how many different randomization schemes are possible we can count combinations of 10 choose 6, which is 10!/(6! (10 - 6)!) = 210. There are 210 different ways to arrange the 6 treatments among the 10 blocks.
+b) To determine how many different randomization schemes are possible we can count combinations of 10 choose 6, which is 10!/(6! (10 - 6)!) = 210. There are 210 different ways to arrange the 6 treatments among the 10 blocks, where each treatment appears exactly once in each block.
 
 
 ####2. 
@@ -35,57 +35,55 @@ a) Some questions I would have for the investigator are:
     1. What question are you trying to answer with this data?
     2. What is Factor A?
     3. What is Factor B?
-    4. Are either of the 2 factors being used a blocks? If so, which one and why?
-    5. Was the treatment randomly assigned to the experimental units?
+    4. Are either of the 2 factors being used a blocks? If so, which one and why? If not, are the experimental units homogeneous?
+    5. Was the treatment randomly assigned to the experimental units? If so, how was this done? If not, why?
     6. Do the 2 values for each factor combination represent observations at different times?
-    7. 
+    7. What are the experimental units?
+    8. How did you apply the treatments to the experimental units? and how did you observe the responses?
+    9. What is the population of interest?
+    
+    
 
 b) Scenario 1: 
 
-    Factor A is a new type of cake mix using 3 different type of sweetener representing a1, a2 and a3: sugar, aspartame and stevia. The 6 levels of Factor B could be 6 different brands of conventional ovens, which serve as blocks. The two observations per each factor combination represent different times at which the cakes are removed from the oven. The goal of the experiment is to see whether any of the 3 types of sweeteners have an effect on reducing baking time. 
+Factor A is a new type of cake mix using 3 different type of sweetener representing a1, a2 and a3: sugar, aspartame and stevia. The 6 levels of Factor B could be 6 different brands of conventional ovens, which serve as blocks. The two observations per each factor combination represent different times at which the cakes are removed from the oven. The goal of the experiment is to see whether any of the 3 types of sweeteners have an effect on reducing baking time. 
     
-    The model is:  
+The model is:  
+    
+  
+This results in a split-plot design with the following ANOVA table:
+
+
+    
+Source of Variation | df     |  
+------------- | ---------|
+Sweetener         | 2 |
+Brand             | 3 |
+Error              | 6 |
+"Main Plot" Total |  11 |
     
     
+Source of Variation       |     df       |
+--------------|-------------|
+Time | 1 |
+TimexSweetner| 2|
+Residual | 9 |
+ Grand Total |  23 |
     
-    This results in a split-plot design with the following ANOVA table:
+    
+Scenario 2: Factor A is a new type of jet fuel with three different additives to reduce co2 produced, which represent a1, a3 and a3. The 6 levels of Factor B are 6 different manufacturers of jet engines and are blocks. Each additive is compared to a control, which is the current industry standard. The 2 observations per each factor level combination represent the 2 replications of each additive per each manufacturer The goal of the experiment is to see if any of the additives reduce the amount of Co2 produced after 4 hours.
+    
+The model is:
+    
+    
+    The ANOVA table is :
     
     Source of Variation       |     df       |
     ------------- | -------------|
-    Sweetener      | 2 |
-    Brand      | 3 |
-    Error         | 6 |
-    "Main Plot" Total |  11 |
-    
-    
-    Source of Variation       |     df       |
-    --------------|-------------|
-    Time | 1 |
-    TimexSweetner| 2|
-    Residual | 9 |
-    Grand Total |  23 |
-    
-    
-    Scenario 2: Factor A is a type of fish food with three different flavors representing a1, a3 and a3. The 6 levels of Factor B are 6 different species of popular fish found at pet stores and are blocks. The 2 observations per each factor combination represent feeding times of morning or evening. The goal of the experiment is to see if feeding times results in a certain flavor being eaten more.
-    
-    The model is:
-    
-    This results in a split-plot design with the following ANOVA table:
-    
-    Source of Variation       |     df       |
-    ------------- | -------------|
-    Flavor      | 2 |
-    Species      | 3 |
-    Error         | 6 |
-    "Main Plot" Total |  11 |
-    
-    
-    Source of Variation       |     df       |
-    --------------|-------------|
-    Feeding Time | 1 |
-    FeedingTimexFlavor| 2|
-    Residual | 9 |
-    Grand Total |  23 |
+    Additive      | 2 |
+    Manufacturer  | 3 |
+    Error         | 18 |
+    Total         | 23 |
     
     
     
