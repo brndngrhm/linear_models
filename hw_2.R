@@ -49,3 +49,5 @@ xd <- matrix(c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 design.d <- t(xd) %*% xd
 xd.prime.y <- t(xd) %*% y
 beta.d <- solve(design.d) %*% xd.prime.y
+
+T3 <- -(-7.915) - (-1.944)
