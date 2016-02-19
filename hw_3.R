@@ -64,3 +64,31 @@ design.d <- t(x.d) %*% x.d
 x.dprimey <- t(x.d) %*% y
 beta.hat.d <- solve(design.d) %*% x.dprimey
 names(beta.hat.d)[1] <- "Part d"
+
+t.3 <- -(-7.915) - (-1.944)
+
+#e
+library(MASS)
+design <- t(x) %*% x
+gen.inv <- ginv(design)
+beta.hat <- gen.inv %*% xprimey
+
+design.e <- matrix(c(0,0,0,0,0,1/5,0,0,0,0,1/7,0,0,0,0,1/8), nrow = 4, ncol = 4)
+
+beta.hat.e <- design.e %*% xprimey
+
+#f
+
+r <- matrix(c(5,7,8), nrow=3, ncol=1)
+N <- 20
+r %*% t(r)
+Ct <- (diag(c(5,7,8), 3)-((r %*% t(r))/N))
+
+G <- 2216
+t <- matrix(c(508, 753, 955), ncol=1, nrow=3)
+
+Qt <- (t - ((r %*% G)/N))
+
+new.Ct <- matrix(c(0,0,0,0, .343, .199, 0, .2, .325), ncol = 3, nrow = 3)
+
+Tao.hat <- (new.Ct) %*% Qt
